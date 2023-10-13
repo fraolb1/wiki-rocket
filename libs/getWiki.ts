@@ -14,7 +14,8 @@ export default async function getWiki(searchTerm: string) {
   });
 
   const response = await fetch(
-    "https://en.wikipedia.org/w/api.php?" + searchParams
+    "https://en.wikipedia.org/w/api.php?" + searchParams,
+    { cache: "no-store" }
   );
 
   return response.json();

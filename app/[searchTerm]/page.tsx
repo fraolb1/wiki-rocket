@@ -15,11 +15,16 @@ const page = async ({ params: { searchTerm } }: Props) => {
             key={result.pageid}
             className='flex items-center p-4 border border-gray-300 rounded-lg'>
             <img
-              className='h-24 w-24 object-cover rounded-lg'
+              className=' object-cover rounded-lg'
+              width={result.thumbnail?.width}
+              height={result.thumbnail?.height}
               src={result.thumbnail?.source}
               alt={result.title}
+              loading='lazy'
             />
-            <Link href={`https://en.wikipedia.org/?curid=${result.pageid}`}>
+            <Link
+              href={`https://en.wikipedia.org/?curid=${result.pageid}`}
+              target='_blank'>
               <div className='ml-4'>
                 <h2 className='text-xl font-bold text-gray-100'>
                   {result.title}
