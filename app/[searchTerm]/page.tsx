@@ -1,4 +1,5 @@
 import getWiki from "@/libs/getWiki";
+import Link from "next/link";
 
 interface Props {
   params: { searchTerm: string };
@@ -18,12 +19,14 @@ const page = async ({ params: { searchTerm } }: Props) => {
               src={result.thumbnail?.source}
               alt={result.title}
             />
-            <div className='ml-4'>
-              <h2 className='text-xl font-bold text-gray-100'>
-                {result.title}
-              </h2>
-              <p className='text-gray-200 text-lg'>{result.extract}</p>
-            </div>
+            <Link href={`https://en.wikipedia.org/?curid=${result.pageid}`}>
+              <div className='ml-4'>
+                <h2 className='text-xl font-bold text-gray-100'>
+                  {result.title}
+                </h2>
+                <p className='text-gray-200 text-lg'>{result.extract}</p>
+              </div>
+            </Link>
           </div>
         ))
       ) : (
